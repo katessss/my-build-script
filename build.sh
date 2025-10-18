@@ -25,7 +25,7 @@ fi
 SOURCE_FILE="$1"
 SOURCE_DIR=$(dirname "$SOURCE_FILE")
 SOURCE_FILENAME=$(basename "$SOURCE_FILE")
-if [ ! -f "$SOURCE_FILE" ] || [ ! -r "$SOURCE_FILE" ]; then
+if [ ! -f "$SOURCE_FILE" ]s; then
     error_exit "Исходный файл не найден или недоступен для чтения: $SOURCE_FILE"
 fi
 

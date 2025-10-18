@@ -5,4 +5,4 @@ int main() {
     return 0;
 }
 
-// &Output: hello_cpp_app
+// &Output: hello_world_scpp
