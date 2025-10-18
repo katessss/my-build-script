@@ -63,8 +63,11 @@ case "$SOURCE_FILENAME" in
         fi
         ;;
     *.tex)
-        echo "Обнаружен файл TeX. Компиляция с помощью pdflatex..."
-        if pdflatex -output-directory="$TEMP_DIR" -jobname="$OUTPUT_FILENAME" "$SOURCE_FILE"; then
+        echo "Обнаружен файл TeX. Компиляция с помощью tectonic..."
+        # if pdflatex -output-directory="$TEMP_DIR" -jobname="$OUTPUT_FILENAME" "$SOURCE_FILE"; then
+        if tectonic -o "$TEMP_DIR" "$SOURCE_FILE" ; then 
+            TECTONIC_OUTPUT="$TEMP_DIR/$(basename "$SOURCE_FILE" .tex).pdf"
+            mv -- "$TECTONIC_OUTPUT" "$TEMP_DIR/$OUTPUT_FILENAME.pdf"
             OUTPUT_FILENAME="$OUTPUT_FILENAME.pdf"
             COMPILATION_SUCCESSFUL=true
         else
@@ -78,7 +81,7 @@ esac
 if [ "$COMPILATION_SUCCESSFUL" = true ]; then
     if [ -f "$TEMP_DIR/$OUTPUT_FILENAME" ]; then
         mv "$TEMP_DIR/$OUTPUT_FILENAME" "$SOURCE_DIR/"
-        echo "Сборка успешно завершена. Результат: $SOURCE_DIR/$OUTPUT_FILENAME"
+        echo "Компиляция успешно завершена. Результат: $SOURCE_DIR/$OUTPUT_FILENAME"
     else
         error_exit "Скомпилированный файл не найден во временном каталоге." 6
     fi
