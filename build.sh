@@ -21,11 +21,11 @@ if [ "$#" -ne 1 ]; then
     error_exit "После $0 должен быть передан 1 аргумент"
 fi
 
-# проверка на существование и права доступа
+# проверка на существование
 SOURCE_FILE="$1"
 SOURCE_DIR=$(dirname "$SOURCE_FILE")
 SOURCE_FILENAME=$(basename "$SOURCE_FILE")
-if [ ! -f "$SOURCE_FILE" ]s; then
+if [ ! -f "$SOURCE_FILE" ]; then
     error_exit "Исходный файл не найден или недоступен для чтения: $SOURCE_FILE"
 fi
 
