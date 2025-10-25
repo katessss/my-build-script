@@ -1,5 +1,5 @@
 /*
- * &Output: hello_world_C
+ * Output: hello_world_C
  */
 
 #include <stdio.h>

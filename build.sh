@@ -30,11 +30,11 @@ if [ ! -f "$SOURCE_FILE" ]; then
 fi
 
 # считывание названия для сохранения
-OUTPUT_FILENAME=$(grep '&Output:' "$SOURCE_FILE" | sed 's/.*&Output:[[:space:]]*//')
+OUTPUT_FILENAME=$(grep 'Output:' "$SOURCE_FILE" | sed 's/.*Output:[[:space:]]*//')
 
 # проверка на пустоту
 if [ -z "$OUTPUT_FILENAME" ]; then
-    error_exit "Не удалось найти комментарий с именем выходного файла в формате '&Output: <имя_файла>'."
+    error_exit "Не удалось найти комментарий с именем выходного файла в формате 'Output: <имя_файла>'."
 fi
 
 # создание временного католога
